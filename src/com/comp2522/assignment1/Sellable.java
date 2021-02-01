@@ -6,7 +6,18 @@
 
 package com.comp2522.assignment1;
 
-public interface Sellable {
+import java.io.Serializable;
+
+public interface Sellable extends Serializable {
+    /**
+     * To check if sellable.
+     * @return true if sellable
+     */
     boolean isSellable();
+
+    /**
+     * set to new item.
+     * @param item check the item is sellable
+     */
     void setSellable(boolean item);
 }

@@ -24,11 +24,11 @@ public class SalesItem extends InventoryItem implements Serializable {
     /**
      * Main constructor.
      * @param sku set
-     * @param salesID set
+     * @param newSalesID set new salesID
      */
-    public SalesItem(long sku, long salesID) {
+    public SalesItem(long sku, long newSalesID) {
         super(sku);
-        setSalesID(salesID);
+        setSalesID(newSalesID);
     }
 
     /**
@@ -65,37 +65,36 @@ public class SalesItem extends InventoryItem implements Serializable {
 
     /**
      * salePrice mutator.
-     * @param salePrice set
+     * @param newSalePrice set new salesPrice
      */
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
+    public void setSalePrice(double newSalePrice) {
+        salePrice = newSalePrice;
     }
 
     /**
      * salesID mutator.
-     * @param salesID set
+     * @param newSalesID set new salesID
      */
-    public void setSalesID(long salesID) {
-        this.salesID = salesID;
+    public void setSalesID(long newSalesID) {
+        salesID = newSalesID;
     }
 
     /**
      * sellable mutator.
-     * @param sellable set
+     * @param newSellable set new sellable
      */
-    public void setSellable(boolean sellable) {
-        this.sellable = sellable;
+    public void setSellable(boolean newSellable) {
+        sellable = newSellable;
     }
 
     /**
      * sold mutator.
-     * @param sold set
+     * @param newSold set new sold
      */
-    public void setSold(boolean sold) {
-        if (!sold) {
+    public void setSold(boolean newSold) {
+        if (!newSold) {
             throw new RuntimeException("Can't set property item to unsold");
         }
-        this.sold = sold;
     }
 
     @Override
@@ -107,6 +106,11 @@ public class SalesItem extends InventoryItem implements Serializable {
         } else {
             return -1;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
     }
 
     @Override

@@ -27,14 +27,14 @@ public class Rental implements Serializable {
 
     /**
      * Main Constructor.
-     * @param rentalID set
-     * @param rentalItemID set
-     * @param date set
+     * @param newRentalID set new rentalID
+     * @param newRentalItemID set new rentalItemID
+     * @param newDate set new date
      */
-    public Rental(long rentalID, long rentalItemID, Date date) {
-    setRentalID(rentalID);
-    this.rentalItemID = rentalItemID;
-    this.date = date;
+    public Rental(long newRentalID, long newRentalItemID, final Date newDate) {
+    setRentalID(newRentalID);
+    rentalItemID = newRentalItemID;
+    date = newDate;
 }
     /**
      * comments accessor.
@@ -95,52 +95,52 @@ public class Rental implements Serializable {
 
     /**
      * comments mutator.
-     * @param comments comments set
+     * @param newComments comments set to newComments
      */
-    public void setComments(final String comments) {
-        if (comments == null) {
+    public void setComments(final String newComments) {
+        if (newComments == null) {
             throw new NullPointerException("NullPointerException Caught: comments");
         }
-        this.comments = comments;
+        comments = newComments;
     }
 
     /**
      * conditionAfter mutator.
-     * @param conditionAfter must not be null
+     * @param newConditionAfter must not be null
      */
-    public void setConditionAfter(final Condition conditionAfter) {
-        if (conditionAfter == null) {
+    public void setConditionAfter(final Condition newConditionAfter) {
+        if (newConditionAfter == null) {
             throw new NullPointerException("NullPointerException Caught: condition after");
         }
-        this.conditionAfter = conditionAfter;
+        conditionAfter = newConditionAfter;
     }
 
     /**
      * conditionBefore mutator.
-     * @param conditionBefore must not be null
+     * @param newConditionBefore must not be null
      */
-    public void setConditionBefore(final Condition conditionBefore) {
-        if (conditionBefore == null) {
+    public void setConditionBefore(final Condition newConditionBefore) {
+        if (newConditionBefore == null) {
             throw new NullPointerException("NullPointerException Caught: conditionBefore");
         }
-        this.conditionBefore = conditionBefore;
+        conditionBefore = newConditionBefore;
     }
 
     /**
      * rentalID mutator.
-     * @param rentalID set
+     * @param newRentalID set to new rentalID
      */
-    public void setRentalID(long rentalID) {
-        this.rentalID = rentalID;
+    public void setRentalID(long newRentalID) {
+        rentalID = newRentalID;
     }
 
     /**
      * rentalCost mutator.
-     * @param rentalCost set
+     * @param newRentalCost set
      */
-    public void setCostOfRental(double rentalCost) {
-        if (rentalCost > 0) {
-            this.rentalCost = rentalCost;
+    public void setCostOfRental(double newRentalCost) {
+        if (newRentalCost > 0) {
+            rentalCost = newRentalCost;
         }
     }
 

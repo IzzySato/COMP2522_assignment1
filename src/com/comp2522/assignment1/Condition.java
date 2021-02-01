@@ -6,22 +6,29 @@
 
 package com.comp2522.assignment1;
 
-
-/**
- * Rental Condition:
- *     AVERAGE,
- *     POOR,
- *     EXCELLENT,
- *     GREAT,
- *     DAMAGED,
- *     UNDEFINED.
- */
-
 public enum Condition {
+    /**
+     * Average condition.
+     */
     AVERAGE,
+    /**
+     * Poor condition.
+     */
     POOR,
+    /**
+     * Excellent condition.
+     */
     EXCELLENT,
+    /**
+     * Great condition.
+     */
     GREAT,
+    /**
+     * Damaged condition.
+     */
     DAMAGED,
+    /**
+     * Undefined.
+     */
     UNDEFINED
 }

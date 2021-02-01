@@ -86,62 +86,66 @@ public class RentalItem extends InventoryItem implements Serializable {
 
     /**
      * currentCondition mutator.
-     * @param currentCondition set
+     * @param newCurrentCondition set to new currentCondition
      */
-    public void setCurrentCondition(final Condition currentCondition) {
-        if (currentCondition == null) {
+    public void setCurrentCondition(final Condition newCurrentCondition) {
+        if (newCurrentCondition == null) {
             throw new NullPointerException("NullPointerException Caught");
         }
-        this.currentCondition = currentCondition;
+        currentCondition = newCurrentCondition;
     }
 
     /**
      * items mutator.
-     * @param items set
+     * @param newItems set new item
      */
-    public void setItems(final Rental[] items) {
-        this.items = items;
+    public void setItems(final Rental[] newItems) {
+        items = newItems;
     }
 
     /**
      * rentalID mutator.
-     * @param rentalID set
+     * @param newRentalID set new rentalID
      */
-    public void setRentalID(long rentalID) {
-        this.rentalID = rentalID;
+    public void setRentalID(long newRentalID) {
+        rentalID = newRentalID;
     }
 
     /**
      * rentalPrice mutator.
-     * @param rentalPrice set
+     * @param newRentalPrice set to new rentalPrice
      */
-    public void setRentalPrice(double rentalPrice) {
-        this.rentalPrice = rentalPrice;
+    public void setRentalPrice(double newRentalPrice) {
+        rentalPrice = newRentalPrice;
     }
 
     /**
      * sellable mutator.
-     * @param sellable set
+     * @param newSellable set to new sellable
      */
-    public void setSellable(boolean sellable) {
-        this.sellable = sellable;
+    public void setSellable(boolean newSellable) {
+        sellable = newSellable;
     }
 
     /**
      * sold mutator.
-     * @param sold set
+     * @param newSold set to new sold
      */
-    public void setSold(boolean sold) {
-        this.sold = sold;
+    public void setSold(boolean newSold) {
+        if (!newSold) {
+            throw new RuntimeException("newSold must be true");
+        }
     }
 
-    private Rental[] addNewItem(final Rental items[], final Rental newRental) {
-        int size = items.length;
-        Rental newArr[] = new Rental[size + 1];
+    private Rental[] addNewItem(final Rental[] rentalItems,
+                                final Rental newRental) {
+        int size = rentalItems.length;
+        Rental[] newArr = new Rental[size + 1];
         try {
             for (int i = 0; i < size; i++) {
-                newArr[i] = items[i];
+                newArr[i] = rentalItems[i];
             }
+            //newArr = Array.copy();
             newArr[size] = newRental;
 
         } catch (Exception e) {
@@ -156,7 +160,7 @@ public class RentalItem extends InventoryItem implements Serializable {
      */
     public void addRental(final Rental item) {
         if (item == null) {
-            throw new NullPointerException("NullPointerException Caught: comments");
+            throw new NullPointerException("item must not be null");
         }
         items = addNewItem(items, item);
     }
@@ -171,6 +175,16 @@ public class RentalItem extends InventoryItem implements Serializable {
             total += item.getCostOfRental();
         }
         return total;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        return super.equals(obj);
     }
 
     @Override

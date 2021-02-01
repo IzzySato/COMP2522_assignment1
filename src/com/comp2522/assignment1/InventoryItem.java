@@ -9,7 +9,8 @@ import java.util.Date;
  * @version 1
  */
 
-public class InventoryItem implements Sellable, Comparable, Serializable {
+public class InventoryItem implements Sellable, Comparable<Object>,
+        Serializable {
     private Date ipd;
     private long sku;
     private String description;
@@ -26,10 +27,10 @@ public class InventoryItem implements Sellable, Comparable, Serializable {
 
     /**
      * Main constructor.
-     * @param sku sku number
+     * @param newSku sku number
      */
-    public InventoryItem(long sku) {
-        setSKU(sku);
+    public InventoryItem(long newSku) {
+        setSKU(newSku);
     }
 
     /**
@@ -83,64 +84,64 @@ public class InventoryItem implements Sellable, Comparable, Serializable {
 
     /**
      * ipd mutator.
-     * @param ipd ipd set
+     * @param newDate ipd set to new date
      */
-    public void setIPD(final Date ipd) {
-        this.ipd = ipd;
+    public void setIPD(final Date newDate) {
+        ipd = newDate;
     }
 
     /**
      * name mutator.
-     * @param name name set
+     * @param newName name set to new name
      */
-    public void setName(final String name) {
-        this.name = name;
+    public void setName(final String newName) {
+        name = newName;
     }
 
     /**
      * purchasePrice mutator.
-     * @param purchasePrice purchasePrice set
+     * @param newPurchasePrice purchasePrice set
      */
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
+    public void setPurchasePrice(double newPurchasePrice) {
+        purchasePrice = newPurchasePrice;
     }
 
+
     /**
-     * SKU mutator.
-     * @param sku sku set
+     * sku mutator.
+     * @param newSku set to newSku
      */
-    public void setSKU(long sku) {
-        this.sku = sku;
+    public void setSKU(long newSku) {
+        sku = newSku;
     }
 
     /**
      * type mutator.
-     * @param type type set
+     * @param newType set to a new type
      */
-    public void setType(final String type) {
-        this.type = type;
+    public void setType(final String newType) {
+        type = newType;
     }
 
     /**
      * description mutator.
-     * @param description description set
+     * @param newDescription set to new description
      */
-    public void setDescription(final String description) {
-        if (description == null) {
+    public void setDescription(final String newDescription) {
+        if (newDescription == null) {
             throw new NullPointerException("description must not be null");
         }
-        this.description = description;
+        description = newDescription;
     }
 
     @Override
     public boolean isSellable() {
-
         return false;
     }
 
     @Override
     public void setSellable(boolean item) {
-
+        //TODO
     }
 
     @Override
@@ -152,6 +153,11 @@ public class InventoryItem implements Sellable, Comparable, Serializable {
         } else {
             return -1;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) sku << ipd.getTime();
     }
 
     @Override
@@ -167,11 +173,6 @@ public class InventoryItem implements Sellable, Comparable, Serializable {
         }
         InventoryItem item = (InventoryItem) obj;
         return item.getSKU() == this.getSKU();
-    }
-
-    @Override
-    public int hashCode() {
-        return 1;
     }
 
     @Override

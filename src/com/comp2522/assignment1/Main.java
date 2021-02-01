@@ -8,7 +8,7 @@ package com.comp2522.assignment1;
 public class Main {
     /**
      * main.
-     * @param args
+     * @param args arguments
      */
     public static void main(final String[] args) {
     }
